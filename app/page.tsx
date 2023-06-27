@@ -29,6 +29,7 @@ export default function Home() {
             <p>test item {index + 1}</p>
             {hoveredIdx === index ? (
               <motion.div
+                whileTap={{ scale: 0.96 }}
                 className="w-full h-full absolute top-0 left-0 bg-gradient-to-r from-white/10 rounded"
                 layoutId="hoverBG"
                 transition={{ duration: 0.2 }}
