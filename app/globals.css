@@ -18,10 +18,21 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.mask-container {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 20px, #000 60px, transparent),
+    linear-gradient(0deg, transparent 0, transparent 20px, #000 60px, transparent);
+  mask-image: linear-gradient(180deg, transparent 0, transparent 20px, #000 60px, transparent),
+    linear-gradient(0deg, transparent 0, transparent 20px, #000 60px, transparent);
+}
+
+.mask-container::-webkit-scrollbar {
+  background-color: #ffffff10;
+  width: 8px;
+}
+
+.mask-container::-webkit-scrollbar-thumb {
+  background-color: #ffffff10;
 }
