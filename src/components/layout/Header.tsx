@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
 import { cls } from "@/utils";
 import Navigation from "./Navigation";
 import { useScrollHeader } from "@/hooks";
 
 const Header = () => {
   const showHeader = useScrollHeader();
-
-  useEffect(() => {
-    console.log("🚀 ~ file: Header.tsx:8 ~ Header ~ showHeader:", showHeader);
-  }, [showHeader]);
 
   return (
     <header
@@ -21,12 +16,13 @@ const Header = () => {
         "translate-x-[-50%]",
         "flex items-center justify-between",
         "px-4 md:px-8",
-        "bg-white/5",
+        "bg-gradient-to-r from-white/5 to-white/10",
+        "backdrop-blur",
         "transition-all duration-300",
         showHeader ? "" : "translate-y-[calc(-100%-28px)]"
       )}
     >
-      Header
+      <h1>Ha young</h1>
       <Navigation />
     </header>
   );
