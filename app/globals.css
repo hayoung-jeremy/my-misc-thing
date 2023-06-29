@@ -17,8 +17,7 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  @apply text-slate-100 bg-slate-900;
 }
 
 .mask-container {
@@ -28,11 +27,11 @@ body {
     linear-gradient(0deg, transparent 0, transparent 20px, #000 60px, transparent);
 }
 
-.mask-container::-webkit-scrollbar {
+::-webkit-scrollbar {
   background-color: #ffffff10;
   width: 8px;
 }
 
-.mask-container::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #ffffff10;
 }

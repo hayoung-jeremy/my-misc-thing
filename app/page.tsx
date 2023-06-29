@@ -1,15 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-
-import { Header } from "@/components/layout";
 
 export default function Home() {
   const [hoveredIdx, setHoveredIdx] = useState(-1);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-slate-900">
-      <Header />
+    <>
       <div className="w-full max-w-[400px]">
         <ul className="h-[400px] mask-container overflow-x-hidden overflow-y-auto py-[40px] flex flex-col">
           {Array.from({ length: 40 }, (_, index) => (
@@ -37,6 +34,6 @@ export default function Home() {
           <p>test item {index + 1}</p>
         </div>
       ))}
-    </main>
+    </>
   );
 }
