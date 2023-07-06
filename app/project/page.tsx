@@ -1,30 +1,68 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
 import { cls } from "@/utils";
+import { Article } from "@/components/project";
 
 const projectList = [
   {
-    title: "renault",
-    desc: "renault description",
+    title: "Renault",
+    desc: "Renault description",
+    thumbnailImg: "",
+  },
+  {
+    title: "Clarins",
+    desc: "Clarins description",
+    thumbnailImg: "",
+  },
+  {
+    title: "AI research",
+    desc: "AI research description",
     thumbnailImg: "",
   },
 ];
 
 const Project = () => {
+  const [currentOpenArticleIdx, setCurrentOpenArticleIdx] = useState(-1);
+
+  const variants = {
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.05,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      transition: {
+        when: "afterChildren",
+      },
+    },
+  };
+
   return (
     <div
-      className={cls(
-        "w-full md:max-w-[90vw] xl:max-w-[1200px] min-h-screen",
-        "px-4 pt-[80px] md:pt-[140px] md:px-0",
-        "bg-white/5"
-      )}
+      className={cls("w-full md:max-w-[90vw] xl:max-w-[1200px] min-h-screen", "px-4 pt-[80px] md:pt-[140px] md:px-0")}
     >
-      <p className="">{"Hi, I'm Ha young"}</p>
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        <article className={cls("border border-white/20", "flex flex-col items-center justify-center")}></article>
-        <article>2</article>
-        <article>3</article>
-      </div>
+      <p className="font-AppleSDGothicNeoR text-[24px] mb-4">Project List</p>
+      <motion.ul variants={variants} initial="hidden" animate="visible" className="flex flex-wrap content-start gap-5">
+        {projectList.map((item: any, index: number) => {
+          return (
+            <Article
+              key={index}
+              listIdx={index}
+              title={item.title}
+              desc={item.desc}
+              thumbnailImg={item.thumbnailImg}
+              currentOpenArticleIdx={currentOpenArticleIdx}
+              setCurrentOpenArticleIdx={setCurrentOpenArticleIdx}
+            />
+          );
+        })}
+      </motion.ul>
     </div>
   );
 };
