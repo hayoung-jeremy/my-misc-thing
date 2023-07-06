@@ -23,7 +23,7 @@ export default function Home() {
               onMouseOver={() => setHoveredIdx(index)}
               onMouseLeave={() => setHoveredIdx(-1)}
               key={index}
-              className="py-3 px-4 relative"
+              className="py-2.5 px-4 relative"
             >
               <p>test item {index + 1}</p>
               {hoveredIdx === index ? (
@@ -38,11 +38,6 @@ export default function Home() {
           ))}
         </ul>
       </div>
-      {Array.from({ length: 100 }, (_, index) => (
-        <div key={index} className="py-3 px-4 relative">
-          <p>test item {index + 1}</p>
-        </div>
-      ))}
     </motion.main>
   );
 }
