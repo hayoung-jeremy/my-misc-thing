@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { cls } from "@/utils";
-import { useDisplay, useScrollHandler } from "@/hooks";
+import { useDisplay, usePreventScrollHandler } from "@/hooks";
 
 const navMenu = [
   { title: "CV", url: "/cv" },
@@ -19,7 +19,7 @@ const Navigation = ({ currentPageIdx, setCurrentPageIdx }: Props) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const { isMobile, isDesktop } = useDisplay();
 
-  useScrollHandler(isNavOpen);
+  usePreventScrollHandler(isNavOpen);
 
   return (
     <nav className={cls("")}>

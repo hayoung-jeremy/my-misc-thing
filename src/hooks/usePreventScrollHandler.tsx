@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useScrollHandler = (outerState: boolean) => {
+const usePreventScrollHandler = (outerState: boolean) => {
   useEffect(() => {
     const handleScroll = (event: any) => {
       if (outerState) {
@@ -30,4 +30,4 @@ const useScrollHandler = (outerState: boolean) => {
   }, [outerState]);
 };
 
-export default useScrollHandler;
+export default usePreventScrollHandler;
