@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -47,8 +47,24 @@ const testSwiperList = [
   },
 ];
 
+const mainBannerVariants = {
+  start: {
+    opacity: 0,
+  },
+  end: {
+    opacity: 1,
+  },
+};
+
 export default function Home() {
   const [hoveredIdx, setHoveredIdx] = useState(-1);
+  const [startMainBannerAnim, setStartMainBannerAnim] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStartMainBannerAnim(true);
+    }, 1500);
+  }, []);
 
   return (
     <motion.main
@@ -59,8 +75,25 @@ export default function Home() {
         opacity: { ease: "linear" },
         layout: { duration: 0.3 },
       }}
-      className="flex min-h-screen flex-col items-center justify-center bg-slate-900 gap-[20px] md:gap-[40px]"
+      className="flex min-h-screen flex-col items-center justify-center bg-slate-900 gap-[20px] md:gap-[40px] px-4 pt-[80px] md:pt-[140px] md:px-0"
     >
+      <motion.div
+        initial={false}
+        animate={startMainBannerAnim ? { width: 1200 } : { width: 800 }}
+        transition={{ duration: 1 }}
+        className="h-[720px] bg-black overflow-hidden"
+      >
+        <div className="relative w-full h-full">
+          <Image src="/images/whole_car.png" alt="whole_car.png" className="object-contain" fill />
+          <motion.div
+            animate={startMainBannerAnim ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.85 }}
+            className="relative w-full h-full"
+          >
+            <Image src="/images/headlight_only.png" alt="headlight_only.png" className="object-contain" fill />
+          </motion.div>
+        </div>
+      </motion.div>
       <div className="w-full max-w-[400px]">
         <ul className="h-[400px] mask-container overflow-x-hidden overflow-y-auto py-[40px] flex flex-col">
           {Array.from({ length: 40 }, (_, index) => (
