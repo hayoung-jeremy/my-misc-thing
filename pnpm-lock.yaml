@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@react-three/drei':
     specifier: ^9.78.1
@@ -11,14 +15,14 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2(@react-three/fiber@8.13.4)(@splinetool/loader@0.9.378)
   '@theatre/core':
-    specifier: ^0.6.1
-    version: 0.6.1
+    specifier: ^0.5.1
+    version: 0.5.1
   '@theatre/r3f':
-    specifier: ^0.6.1
-    version: 0.6.1(@react-three/fiber@8.13.4)(@theatre/core@0.6.1)(@theatre/studio@0.6.1)(react-dom@18.2.0)(react@18.2.0)(three@0.153.0)
+    specifier: ^0.5.1
+    version: 0.5.1(@react-three/fiber@8.13.4)(@theatre/core@0.5.1)(@theatre/studio@0.5.1)(react-dom@18.2.0)(react@18.2.0)(three@0.153.0)
   '@theatre/studio':
-    specifier: ^0.6.1
-    version: 0.6.1(@theatre/core@0.6.1)
+    specifier: ^0.5.1
+    version: 0.5.1(@theatre/core@0.5.1)
   '@types/node':
     specifier: 20.3.1
     version: 20.3.1
@@ -500,20 +504,20 @@ packages:
       tslib: 2.5.3
     dev: false
 
-  /@theatre/core@0.6.1:
-    resolution: {integrity: sha512-ZvSqAAB2LVVnB6hDzKQOVHjeZtb7Hvqu1IrFRITv4Kq6465Cn9VI2nwcDjelDCOmTIv23pd8d3Fz2DPYjjF9mg==}
+  /@theatre/core@0.5.1:
+    resolution: {integrity: sha512-LV3LwHPWVm62bR6DUQ55t4kCaI1KGrz+rPLoA6pMJ57x+6vBpoSCI0b11gJPdA1mCXebcNWN+U5M3PP6jJaSSg==}
     dependencies:
-      '@theatre/dataverse': 0.6.1
+      '@theatre/dataverse': 0.5.1
     dev: false
 
-  /@theatre/dataverse@0.6.1:
-    resolution: {integrity: sha512-iomovt4oWCEAZFP6/BdSJAb2cAjPOs6y3wh7QlrUBmEwdQ/21ISK9N2IsCzlJ0t16w58l7Eh61Gw60Y0t7/uNA==}
+  /@theatre/dataverse@0.5.1:
+    resolution: {integrity: sha512-oTjR8fNDbY11GSp7kw8quuOE9IC/5qzTe++OjFgn5enHKcFSaSPAZ8SIyOs+Im9bYgjcJFg/AYgU3Xi/MENgwQ==}
     dependencies:
       lodash-es: 4.17.21
     dev: false
 
-  /@theatre/r3f@0.6.1(@react-three/fiber@8.13.4)(@theatre/core@0.6.1)(@theatre/studio@0.6.1)(react-dom@18.2.0)(react@18.2.0)(three@0.153.0):
-    resolution: {integrity: sha512-tUGu+NxXu8znEgAFzBskxOWCpf16fc6yHkKyljeSQ737ad3srF8ht1zo3gbF9ZDxJJMFwtPAVwy18vx1z7+yTw==}
+  /@theatre/r3f@0.5.1(@react-three/fiber@8.13.4)(@theatre/core@0.5.1)(@theatre/studio@0.5.1)(react-dom@18.2.0)(react@18.2.0)(three@0.153.0):
+    resolution: {integrity: sha512-y42yxafM2kjk1iQImZPp7+qe21OviZhSY9h1Lh07YZWWSeMRoK1rASqtY+DQvawh8IqOT4ySBUX/zMBPoaRvPQ==}
     peerDependencies:
       '@react-three/fiber': '>=7.0.6'
       '@theatre/core': '*'
@@ -523,20 +527,20 @@ packages:
       three: '>=0.131.3'
     dependencies:
       '@react-three/fiber': 8.13.4(react-dom@18.2.0)(react@18.2.0)(three@0.153.0)
-      '@theatre/core': 0.6.1
-      '@theatre/studio': 0.6.1(@theatre/core@0.6.1)
+      '@theatre/core': 0.5.1
+      '@theatre/studio': 0.5.1(@theatre/core@0.5.1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       three: 0.153.0
     dev: false
 
-  /@theatre/studio@0.6.1(@theatre/core@0.6.1):
-    resolution: {integrity: sha512-aJlHnfYctYbw2zDd+AK0ts4oKR4RuiQZCgMhANKv8VucINFqfDFcl6ixN6qxCTQfBFe4s/qyyc9y/9Np1ZCPwQ==}
+  /@theatre/studio@0.5.1(@theatre/core@0.5.1):
+    resolution: {integrity: sha512-6r8JjSdUhL8JXMLlnhOLLFc/Br5Ddcq4EQmwUSCEBbFuJZcyb++GxV23p5W7a0DiB7NgtKdORj77n5NBt0WEpA==}
     peerDependencies:
       '@theatre/core': '*'
     dependencies:
-      '@theatre/core': 0.6.1
-      '@theatre/dataverse': 0.6.1
+      '@theatre/core': 0.5.1
+      '@theatre/dataverse': 0.5.1
     dev: false
 
   /@tweenjs/tween.js@18.6.4:
