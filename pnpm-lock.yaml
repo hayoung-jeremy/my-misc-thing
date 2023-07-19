@@ -10,6 +10,15 @@ dependencies:
   '@splinetool/r3f-spline':
     specifier: ^1.0.2
     version: 1.0.2(@react-three/fiber@8.13.4)(@splinetool/loader@0.9.378)
+  '@theatre/core':
+    specifier: ^0.6.1
+    version: 0.6.1
+  '@theatre/r3f':
+    specifier: ^0.6.1
+    version: 0.6.1(@react-three/fiber@8.13.4)(@theatre/core@0.6.1)(@theatre/studio@0.6.1)(react-dom@18.2.0)(react@18.2.0)(three@0.153.0)
+  '@theatre/studio':
+    specifier: ^0.6.1
+    version: 0.6.1(@theatre/core@0.6.1)
   '@types/node':
     specifier: 20.3.1
     version: 20.3.1
@@ -489,6 +498,45 @@ packages:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
     dependencies:
       tslib: 2.5.3
+    dev: false
+
+  /@theatre/core@0.6.1:
+    resolution: {integrity: sha512-ZvSqAAB2LVVnB6hDzKQOVHjeZtb7Hvqu1IrFRITv4Kq6465Cn9VI2nwcDjelDCOmTIv23pd8d3Fz2DPYjjF9mg==}
+    dependencies:
+      '@theatre/dataverse': 0.6.1
+    dev: false
+
+  /@theatre/dataverse@0.6.1:
+    resolution: {integrity: sha512-iomovt4oWCEAZFP6/BdSJAb2cAjPOs6y3wh7QlrUBmEwdQ/21ISK9N2IsCzlJ0t16w58l7Eh61Gw60Y0t7/uNA==}
+    dependencies:
+      lodash-es: 4.17.21
+    dev: false
+
+  /@theatre/r3f@0.6.1(@react-three/fiber@8.13.4)(@theatre/core@0.6.1)(@theatre/studio@0.6.1)(react-dom@18.2.0)(react@18.2.0)(three@0.153.0):
+    resolution: {integrity: sha512-tUGu+NxXu8znEgAFzBskxOWCpf16fc6yHkKyljeSQ737ad3srF8ht1zo3gbF9ZDxJJMFwtPAVwy18vx1z7+yTw==}
+    peerDependencies:
+      '@react-three/fiber': '>=7.0.6'
+      '@theatre/core': '*'
+      '@theatre/studio': '*'
+      react: '>=17.0.2'
+      react-dom: '>=17.0.2'
+      three: '>=0.131.3'
+    dependencies:
+      '@react-three/fiber': 8.13.4(react-dom@18.2.0)(react@18.2.0)(three@0.153.0)
+      '@theatre/core': 0.6.1
+      '@theatre/studio': 0.6.1(@theatre/core@0.6.1)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      three: 0.153.0
+    dev: false
+
+  /@theatre/studio@0.6.1(@theatre/core@0.6.1):
+    resolution: {integrity: sha512-aJlHnfYctYbw2zDd+AK0ts4oKR4RuiQZCgMhANKv8VucINFqfDFcl6ixN6qxCTQfBFe4s/qyyc9y/9Np1ZCPwQ==}
+    peerDependencies:
+      '@theatre/core': '*'
+    dependencies:
+      '@theatre/core': 0.6.1
+      '@theatre/dataverse': 0.6.1
     dev: false
 
   /@tweenjs/tween.js@18.6.4:
@@ -2073,6 +2121,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+    dev: false
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
   /lodash.clamp@4.0.3:

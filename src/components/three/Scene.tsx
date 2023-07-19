@@ -1,8 +1,16 @@
 "use-client";
-import { Bounds, OrbitControls, PerspectiveCamera, useBounds } from "@react-three/drei";
-
-import { useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Bounds, OrbitControls, PerspectiveCamera, useBounds } from "@react-three/drei";
+import { getProject } from "@theatre/core";
+import studio from "@theatre/studio";
+import extension from "@theatre/r3f/dist/extension";
+
+const demoSheet = getProject("Demo Project").sheet("Demo Sheet");
+if (process.env.NODE_ENV === "development") {
+  studio.initialize();
+  studio.extend(extension);
+}
 
 export default function TestScene({ ...props }) {
   const torusKnotRef = useRef<any>(null);
@@ -63,8 +71,8 @@ export default function TestScene({ ...props }) {
         </Suspense>
 
         <hemisphereLight name="Default Ambient Light" intensity={0.75} color="#eaeaea" />
-        <gridHelper />
-        <axesHelper />
+        {/* <gridHelper /> */}
+        {/* <axesHelper /> */}
         <PerspectiveCamera />
         <OrbitControls makeDefault />
       </group>
