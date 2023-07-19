@@ -2,16 +2,6 @@
 import { Suspense, useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Bounds, OrbitControls, PerspectiveCamera, useBounds } from "@react-three/drei";
-import { getProject } from "@theatre/core";
-import studio from "@theatre/studio";
-import extension from "@theatre/r3f/dist/extension";
-import { SheetProvider } from "@theatre/r3f";
-
-const demoSheet = getProject("Demo Project").sheet("Demo Sheet");
-if (process.env.NODE_ENV === "development") {
-  studio.initialize();
-  studio.extend(extension);
-}
 
 export default function TestScene({ ...props }) {
   const torusKnotRef = useRef<any>(null);
@@ -24,7 +14,7 @@ export default function TestScene({ ...props }) {
   });
 
   return (
-    <SheetProvider sheet={demoSheet}>
+    <>
       <group {...props} dispose={null}>
         <directionalLight
           name="Directional Light"
@@ -77,7 +67,7 @@ export default function TestScene({ ...props }) {
         <PerspectiveCamera />
         <OrbitControls makeDefault />
       </group>
-    </SheetProvider>
+    </>
   );
 }
 
