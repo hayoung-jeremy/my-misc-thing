@@ -6,7 +6,7 @@ import { Scene } from "@/components/three";
 const TestCanvas = () => {
   return (
     <div className="w-screen h-screen">
-      <Canvas>
+      <Canvas gl={{ preserveDrawingBuffer: true }}>
         <Scene />
       </Canvas>
     </div>
