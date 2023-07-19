@@ -1,1 +1,1 @@
-export { default as TestScene } from "./TestScene";
+export { default as Scene } from "./Scene";

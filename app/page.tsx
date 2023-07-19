@@ -87,7 +87,7 @@ export default function Home() {
           <Image src="/images/whole_car.png" alt="whole_car.png" className="object-contain" fill />
           <motion.div
             animate={startMainBannerAnim ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.85 }}
+            transition={{ duration: 4.8, delay: 0.35 }}
             className="relative w-full h-full"
           >
             <Image src="/images/headlight_only.png" alt="headlight_only.png" className="object-contain" fill />
