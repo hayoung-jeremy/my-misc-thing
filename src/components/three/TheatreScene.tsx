@@ -29,7 +29,7 @@ const TheatreScene = () => {
         attachFns={undefined}
         lookAt={[0, 0, 0]}
       />
-      <ambientLight />
+
       <e.pointLight theatreKey="pointLight" position={[10, 10, 10]} />
       <e.mesh theatreKey="box">
         <boxGeometry args={[1, 1, 1]} />
