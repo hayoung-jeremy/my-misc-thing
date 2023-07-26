@@ -81,6 +81,25 @@ body {
   background-color: #ffffff10;
 }
 
+.btn {
+  outline: none;
+}
+.btn:focus {
+  outline: none;
+}
+
+.btn > span.btn-border {
+  background: linear-gradient(orange, deeppink, purple) border-box;
+  --corner: conic-gradient(from -90deg at 16px 16px, red 25%, #0000 0) 0 0 / calc(100% - 16px) calc(100% - 16px)
+    border-box;
+  --inner: conic-gradient(red 0 0) padding-box;
+
+  -webkit-mask: var(--corner), var(--inner);
+  -webkit-mask-composite: source-out;
+  mask: var(--corner) subtract, var(--inner);
+  mask-composite: source-out;
+}
+
 .swiper.main-swiper .swiper-wrapper {
   align-items: center;
 }

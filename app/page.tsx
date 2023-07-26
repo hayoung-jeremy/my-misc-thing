@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 
+import { Button } from "@/components";
 import { MainBanner, ScrollableMaskedContainer, TestSlider } from "@/components/main";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       }}
       className="flex min-h-screen flex-col items-center justify-center bg-slate-900 gap-[20px] md:gap-[40px] px-4 pt-[80px] md:pt-[140px] md:px-0"
     >
+      <Button />
       <MainBanner />
       <ScrollableMaskedContainer />
       <TestSlider />
