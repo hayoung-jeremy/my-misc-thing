@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { cls } from "@/utils";
 
 const Button = () => {
-  const [touchStart, setTouchStart] = useState(false);
-
   const btnMotion = {
     rest: {
       color: "#fff",
@@ -20,6 +18,30 @@ const Button = () => {
     },
     clicked: {
       color: "yellow",
+      transition: {
+        duration: 0.16,
+      },
+    },
+  };
+
+  const btnBorderMotion = {
+    rest: {
+      background: "linear-gradient(#ffffff90, #ffffff90, #ffffff90) border-box",
+      borderRadius: "8px",
+      transition: {
+        duration: 0.24,
+      },
+    },
+    hovered: {
+      background: "linear-gradient(#ffff00, #ffff00, #ffff00) border-box",
+      borderRadius: "12px",
+      transition: {
+        duration: 0.24,
+      },
+    },
+    clicked: {
+      background: "linear-gradient(#ffff0080, #ffff00, #ffff0080) border-box",
+      borderRadius: "12px",
       transition: {
         duration: 0.16,
       },
@@ -47,31 +69,7 @@ const Button = () => {
     clicked: {
       width: "calc(100% - 12px)",
       height: "calc(100% - 12px)",
-      backgroundColor: "#FFEE0020",
-      transition: {
-        duration: 0.16,
-      },
-    },
-  };
-
-  const btnBorderMotion = {
-    rest: {
-      borderColor: "#fff",
-      borderRadius: "8px",
-      transition: {
-        duration: 0.24,
-      },
-    },
-    hovered: {
-      borderColor: "#ffee00",
-      borderRadius: "12px",
-      transition: {
-        duration: 0.24,
-      },
-    },
-    clicked: {
-      borderColor: "#ffee00",
-      borderRadius: "12px",
+      backgroundColor: "#FFEE0016",
       transition: {
         duration: 0.16,
       },
@@ -95,14 +93,13 @@ const Button = () => {
     >
       <motion.span
         variants={btnBorderMotion}
-        className={cls("btn-border", "rounded-[8px]", "absolute z-[1] inset-[-2px] border-[2px]")}
+        // initial="rest"
+        // animate="clicked"
+        className={cls("btn-border", "rounded-[8px]", "absolute z-[1] inset-[-2px] ")}
       />
       <motion.span
         variants={btnBgMotion}
-        className={cls(
-          "btn-bg",
-          "absolute z-[1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[6px]"
-        )}
+        className={cls("btn-bg", "absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[6px]")}
       />
       Button
     </motion.button>
