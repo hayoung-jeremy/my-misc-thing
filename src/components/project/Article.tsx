@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
 import { motion } from "framer-motion";
 
 import { cls } from "@/utils";
@@ -19,10 +19,6 @@ const Article = ({ listIdx, title, desc, thumbnailImg, currentOpenArticleIdx, se
 
   const openSpring = { type: "spring", stiffness: 200, damping: 30 };
   const closeSpring = { type: "spring", stiffness: 300, damping: 35 };
-
-  useEffect(() => {
-    console.log("currentOpenArticleIdx : ", currentOpenArticleIdx);
-  }, [currentOpenArticleIdx]);
 
   return (
     <motion.li
