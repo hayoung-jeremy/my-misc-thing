@@ -6,13 +6,13 @@ export const btnMotion = {
     },
   },
   hovered: {
-    color: "yellow",
+    color: "#ffff00",
     transition: {
       duration: 0.24,
     },
   },
   clicked: {
-    color: "yellow",
+    color: "#ffff00",
     transition: {
       duration: 0.16,
     },
