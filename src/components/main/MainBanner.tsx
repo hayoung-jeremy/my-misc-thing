@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useDisplay } from "@/hooks";
 
 const MainBanner = () => {
   const [startMainBannerAnim, setStartMainBannerAnim] = useState(false);
+  const { isMobile } = useDisplay();
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,9 +16,9 @@ const MainBanner = () => {
   return (
     <motion.div
       initial={false}
-      animate={startMainBannerAnim ? { width: 1200 } : { width: 800 }}
+      animate={startMainBannerAnim ? { width: isMobile ? "100%" : 1200 } : { width: 800 }}
       transition={{ duration: 1 }}
-      className="h-[720px] bg-black overflow-hidden"
+      className="h-[100vh] md:h-[720px] bg-black overflow-hidden"
     >
       <div className="relative w-full h-full">
         <Image src="/images/whole_car.png" alt="whole_car.png" className="object-contain" fill />
