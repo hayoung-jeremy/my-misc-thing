@@ -21,7 +21,7 @@ export const btnMotion = {
 
 export const btnBorderMotion = {
   rest: {
-    background: "linear-gradient(#ffffff90, #ffffff90, #ffffff90) border-box",
+    background: "linear-gradient(#ffffff95, #ffffff95, #ffffff95) border-box",
     borderRadius: "8px",
     transition: {
       duration: 0.24,
@@ -50,7 +50,7 @@ export const btnBgMotion = {
     color: "",
     backgroundColor: "#D9D9D630",
     transition: {
-      duration: 0.24,
+      duration: 0.2,
     },
   },
   hovered: {
@@ -58,7 +58,7 @@ export const btnBgMotion = {
     height: "calc(100% - 8px)",
     backgroundColor: "#FFEE0020",
     transition: {
-      duration: 0.24,
+      duration: 0.2,
     },
   },
   clicked: {
