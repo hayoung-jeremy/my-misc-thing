@@ -65,6 +65,66 @@ body {
   src: url("/fonts/AppleSDGothicNeoH.ttf");
 }
 
+@font-face {
+  font-family: "NouvelR-KR-Bold";
+  src: url("/fonts/NouvelR KR-Bold.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-KR-Book";
+  src: url("/fonts/NouvelR KR-Book.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-KR-Extrabold";
+  src: url("/fonts/NouvelR KR-Extrabold.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-KR-Light";
+  src: url("/fonts/NouvelR KR-Light.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-KR-Regular";
+  src: url("/fonts/NouvelR KR-Regular.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-KR-Semibold";
+  src: url("/fonts/NouvelR KR-Semibold.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-Bold";
+  src: url("/fonts/NouvelR-Bold.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-Book";
+  src: url("/fonts/NouvelR-Book.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-Extrabold";
+  src: url("/fonts/NouvelR-Extrabold.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-Light";
+  src: url("/fonts/NouvelR-Light.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-Regular";
+  src: url("/fonts/NouvelR-Regular.ttf");
+}
+
+@font-face {
+  font-family: "NouvelR-Semibold";
+  src: url("/fonts/NouvelR-Semibold.ttf");
+}
+
 .mask-container {
   -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 20px, #000 60px, transparent),
     linear-gradient(0deg, transparent 0, transparent 20px, #000 60px, transparent);
