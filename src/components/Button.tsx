@@ -27,7 +27,7 @@ const Button = ({ children }: Props) => {
     >
       <motion.span
         variants={btnBorderMotion}
-        className={cls("btn-border", "rounded-[8px]", "absolute z-[1] inset-[-1px] ")}
+        className={cls("frame-border", "rounded-[8px]", "absolute z-[1] inset-[-1px] ")}
       />
       <motion.span
         variants={btnBgMotion}
