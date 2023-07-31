@@ -1,11 +1,48 @@
 "use client";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { Button } from "@/components";
-import { ArrowRight, ArrowRightUp } from "@/components/icons";
+import { AnimatedPlus, ArrowRight, ArrowRightUp, Plus } from "@/components/icons";
 import { MainBanner, ScrollableMaskedContainer, TestSlider } from "@/components/main";
 
+import { cls } from "@/utils";
+import { FAQlist } from "@/constants";
+
 export default function Home() {
+  const [clickedFAQIndex, setClickedFAQIndex] = useState(0);
+
+  const FAQAnswerAnim = {
+    open: {
+      height: "auto",
+      rotateX: 0,
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        mass: 0.8,
+        type: "tween",
+      },
+      display: "flex",
+    },
+    close: {
+      height: "0",
+      rotateX: -15,
+      y: -12,
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+      },
+      transitionEnd: {
+        display: "none",
+      },
+    },
+  };
+
+  useEffect(() => {
+    console.log("clickedFAQIndex : ", clickedFAQIndex);
+  }, [clickedFAQIndex]);
+
   return (
     <motion.main
       layout
@@ -46,6 +83,66 @@ export default function Home() {
           <span className="ml-4 leading-4">BEGIN</span> <ArrowRight />
         </Button>
       </div>
+
+      <ul className={cls("flex flex-col gap-6 items-center justify-center", "md:w-[460px]", "font-NouvelR-Book")}>
+        {FAQlist.map(({ question, answer }, index) => {
+          return (
+            <motion.li
+              key={question}
+              style={{ transition: "height 1s" }}
+              className={cls(
+                "flex flex-col gap-4",
+                "relative",
+                "w-full",
+                "p-4",
+                "border border-transparent",
+                // "overflow-hidden",
+                "bg-[#11111170]",
+                "rounded-lg"
+              )}
+            >
+              <span
+                style={{ background: "linear-gradient(#ffffff95, #ffffff95, #ffffff95) border-box" }}
+                className={cls("frame-border", "rounded-[8px]", "absolute z-[1] inset-[-1px]")}
+              ></span>
+              <span
+                className={cls(
+                  "btn-bg",
+                  "bg-[#D9D9D630]",
+                  "absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[6px]"
+                )}
+              />
+              <p
+                onClick={() => {
+                  if (clickedFAQIndex === index) setClickedFAQIndex(-10);
+                  else setClickedFAQIndex(index);
+                }}
+                className={cls(
+                  "relative z-[1]",
+                  "flex items-start justify-between gap-2",
+                  "font-NouvelR-KR-Semibold leading-5",
+                  "pl-4"
+                )}
+              >
+                <span className="absolute top-0 left-[-6px]">Q.</span>
+                <span className="cursor-pointer">{question}</span>
+                <span className="cursor-pointer">
+                  <AnimatedPlus isToggled={clickedFAQIndex === index} />
+                </span>
+              </p>
+              <motion.div
+                initial="close"
+                animate={clickedFAQIndex === index ? "open" : "close"}
+                variants={FAQAnswerAnim}
+                className="flex flex-col items-center justify-center gap-4"
+              >
+                <div className="bg-[#222222] w-[100px] h-[120px] rounded-xl"></div>
+                <p>{answer}</p>
+              </motion.div>
+            </motion.li>
+          );
+        })}
+      </ul>
       <MainBanner />
       <ScrollableMaskedContainer />
       <TestSlider />
