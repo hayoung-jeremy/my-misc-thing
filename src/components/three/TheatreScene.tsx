@@ -7,10 +7,10 @@ import { OrbitControls, RoundedBox } from "@react-three/drei";
 import demoProjectState from "@/animations/DemoProject.theatre-project-state.json";
 
 const demoSheet = getProject("Demo Project", { state: demoProjectState }).sheet("Demo Sheet");
-if (process.env.NODE_ENV === "development") {
-  studio.initialize();
-  studio.extend(extension);
-}
+// if (process.env.NODE_ENV === "development") {
+//   studio.initialize();
+//   studio.extend(extension);
+// }
 
 const TheatreScene = () => {
   useEffect(() => {
