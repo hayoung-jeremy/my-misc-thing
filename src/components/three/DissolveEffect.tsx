@@ -6,6 +6,7 @@ import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useControls } from "leva";
 
 import { DissolveMaterial } from "./DissolveMaterial";
+import { DeliveryVan, FireTruck } from "./models";
 
 const boxMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 const sphereMaterial = new THREE.MeshStandardMaterial({ color: "white" });
@@ -14,7 +15,7 @@ const DissolveEffect = () => {
   const { itemDisplayed } = useControls({
     itemDisplayed: {
       value: "box",
-      options: ["box", "sphere"],
+      options: ["box", "sphere", "fire truck", "delivery van"],
     },
   });
   const [visibleItem, setVisibleItem] = useState(itemDisplayed);
@@ -45,6 +46,13 @@ const DissolveEffect = () => {
             dissolvingColor="#00c11e"
           />
         </mesh>
+      )}
+
+      {visibleItem === "fire truck" && (
+        <FireTruck position-y={-1} dissolveVisible={itemDisplayed === "fire truck"} onFadeOut={onFadeOut} />
+      )}
+      {visibleItem === "delivery van" && (
+        <DeliveryVan position-y={-1} dissolveVisible={itemDisplayed === "delivery van"} onFadeOut={onFadeOut} />
       )}
 
       <EffectComposer>

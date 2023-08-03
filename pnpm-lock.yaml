@@ -86,6 +86,9 @@ dependencies:
   three-custom-shader-material:
     specifier: ^5.4.0
     version: 5.4.0(@react-three/fiber@8.13.4)(react@18.2.0)(three@0.153.0)
+  three-stdlib:
+    specifier: ^2.24.1
+    version: 2.24.1(three@0.153.0)
   typescript:
     specifier: 5.1.3
     version: 5.1.3
@@ -826,7 +829,7 @@ packages:
       suspend-react: 0.1.3(react@18.2.0)
       three: 0.153.0
       three-mesh-bvh: 0.6.0(three@0.153.0)
-      three-stdlib: 2.23.12(three@0.153.0)
+      three-stdlib: 2.24.1(three@0.153.0)
       troika-three-text: 0.47.2(three@0.153.0)
       utility-types: 3.10.0
       zustand: 3.7.2(react@18.2.0)
@@ -882,7 +885,7 @@ packages:
       postprocessing: 6.32.2(three@0.153.0)
       react: 18.2.0
       three: 0.153.0
-      three-stdlib: 2.23.12(three@0.153.0)
+      three-stdlib: 2.24.1(three@0.153.0)
     transitivePeerDependencies:
       - '@types/three'
     dev: false
@@ -3715,8 +3718,8 @@ packages:
       three: 0.153.0
     dev: false
 
-  /three-stdlib@2.23.12(three@0.153.0):
-    resolution: {integrity: sha512-YFpuCu/ZVHBiK42bzEihZTA3tvEPQhaKE5tYej41AlNYXbwIWxO93fxYYrX7vs275s0yCKr6Zp6y7kI+mOklRQ==}
+  /three-stdlib@2.24.1(three@0.153.0):
+    resolution: {integrity: sha512-imb4IQPtp6hGurwZhfv3K6MCxS/IhXmG6FZxxuVsERwZiVH7KjeHUFT66Jlqs8WC4f3pYkXrH7ht8HpdGcXlMQ==}
     peerDependencies:
       three: '>=0.128.0'
     dependencies:
