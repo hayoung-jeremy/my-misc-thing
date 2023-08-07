@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.78.1",
     "@react-three/fiber": "^8.13.4",
     "@react-three/postprocessing": "^2.15.0",
+    "@react-three/rapier": "^1.1.1",
     "@splinetool/r3f-spline": "^1.0.2",
     "@theatre/core": "^0.5.1",
     "@theatre/r3f": "^0.5.1",
