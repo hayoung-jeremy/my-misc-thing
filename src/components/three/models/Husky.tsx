@@ -7,18 +7,24 @@ import * as THREE from "three";
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export default function Husky(props: JSX.IntrinsicElements["group"]) {
+interface Props {
+  hovered: boolean;
+}
+
+export default function Husky({ hovered, ...props }: Props & JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF("/models/Husky.gltf") as any;
   const { actions } = useAnimations<any>(animations, group);
+  console.log(actions);
 
   useEffect(() => {
-    actions["Idle"]?.reset().fadeIn(0.5).play();
+    const anim = hovered ? "Walk" : "Idle";
+    actions[anim]?.reset().fadeIn(0.5).play();
 
     return () => {
-      actions["Idle"]?.fadeOut(0.5);
+      actions[anim]?.fadeOut(0.5);
     };
-  }, [actions]);
+  }, [actions, hovered]);
 
   return (
     <group ref={group} {...props} dispose={null}>

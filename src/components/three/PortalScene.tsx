@@ -1,6 +1,14 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { CameraControls, Environment, MeshPortalMaterial, RoundedBox, Text, useTexture } from "@react-three/drei";
+import {
+  CameraControls,
+  Environment,
+  MeshPortalMaterial,
+  RoundedBox,
+  Text,
+  useCursor,
+  useTexture,
+} from "@react-three/drei";
 import { Alpaca, Deer, Husky } from "./models";
 import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
@@ -9,8 +17,12 @@ type ActiveCardName = "Alpaca" | "Deer" | "Husky";
 
 const PortalScene = () => {
   const [isActive, setIsActive] = useState<ActiveCardName | null>(null);
+  const [isHovered, setIsHovered] = useState<ActiveCardName | null>(null);
+
   const cameraRef = useRef<CameraControls>(null);
   const scene = useThree(state => state.scene);
+
+  useCursor(isHovered as unknown as boolean);
 
   useEffect(() => {
     if (isActive) {
@@ -34,8 +46,10 @@ const PortalScene = () => {
         rotation-y={Math.PI / 8}
         isActive={isActive}
         setIsActive={setIsActive}
+        isHovered={isHovered}
+        setIsHovered={setIsHovered}
       >
-        <Husky scale={0.5} position-y={-1} />
+        <Husky scale={0.5} position-y={-1} hovered={isHovered === "Husky"} />
       </PortalCard>
       <PortalCard
         name="Alpaca"
@@ -43,8 +57,10 @@ const PortalScene = () => {
         texture="textures/digital_painting_deep_forest_with_flowers.jpg"
         isActive={isActive}
         setIsActive={setIsActive}
+        isHovered={isHovered}
+        setIsHovered={setIsHovered}
       >
-        <Alpaca scale={0.4} position-y={-1} />
+        <Alpaca scale={0.4} position-y={-1} hovered={isHovered === "Alpaca"} />
       </PortalCard>
       <PortalCard
         name="Deer"
@@ -54,8 +70,10 @@ const PortalScene = () => {
         rotation-y={-Math.PI / 8}
         isActive={isActive}
         setIsActive={setIsActive}
+        isHovered={isHovered}
+        setIsHovered={setIsHovered}
       >
-        <Deer scale={0.5} position-y={-1} />
+        <Deer scale={0.5} position-y={-1} hovered={isHovered === "Deer"} />
       </PortalCard>
     </Suspense>
   );
@@ -68,6 +86,8 @@ interface PortalCardProps {
   color: string;
   isActive: ActiveCardName | null;
   setIsActive: React.Dispatch<React.SetStateAction<ActiveCardName | null>>;
+  isHovered: ActiveCardName | null;
+  setIsHovered: React.Dispatch<React.SetStateAction<ActiveCardName | null>>;
 }
 
 const PortalCard = ({
@@ -77,6 +97,8 @@ const PortalCard = ({
   color,
   isActive,
   setIsActive,
+  isHovered,
+  setIsHovered,
   ...props
 }: JSX.IntrinsicElements["group"] & PortalCardProps) => {
   const map = useTexture(texture);
@@ -95,7 +117,13 @@ const PortalCard = ({
         {name}
         <meshBasicMaterial color={color} toneMapped={false} />
       </Text>
-      <RoundedBox name={name} args={[2, 3, 0.1]} onDoubleClick={() => setIsActive(isActive === name ? null : name)}>
+      <RoundedBox
+        name={name}
+        args={[2, 3, 0.1]}
+        onDoubleClick={() => setIsActive(isActive === name ? null : name)}
+        onPointerOver={() => setIsHovered(name)}
+        onPointerOut={() => setIsHovered(null)}
+      >
         <MeshPortalMaterial ref={portalRef}>
           <Environment preset="sunset" />
           <ambientLight intensity={0.5} />
