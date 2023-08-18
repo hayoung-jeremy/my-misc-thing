@@ -13,7 +13,7 @@ const ShaderTorusScene = () => {
     <Suspense fallback={null}>
       <OrbitControls />
       <mesh>
-        <torusGeometry />
+        <torusGeometry args={[1, 0.3, 100, 100]} />
         <shaderMaterial
           vertexShader={torusVertexShader}
           fragmentShader={torusFragmentShader}
