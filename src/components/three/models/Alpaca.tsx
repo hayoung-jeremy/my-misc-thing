@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
@@ -6,6 +6,14 @@ export default function Alpaca(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF("/models/Alpaca.gltf") as any;
   const { actions } = useAnimations<any>(animations, group);
+
+  useEffect(() => {
+    actions["Idle_2"]?.reset().fadeIn(0.5).play();
+
+    return () => {
+      actions["Idle_2"]?.fadeOut(0.5);
+    };
+  }, [actions]);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">

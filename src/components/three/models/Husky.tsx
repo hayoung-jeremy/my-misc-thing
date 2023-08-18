@@ -11,7 +11,6 @@ export default function Husky(props: JSX.IntrinsicElements["group"]) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF("/models/Husky.gltf") as any;
   const { actions } = useAnimations<any>(animations, group);
-  console.log(actions);
 
   useEffect(() => {
     actions["Idle"]?.reset().fadeIn(0.5).play();
