@@ -1,9 +1,15 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useRef, useState } from "react";
 import * as THREE from "three";
 import { Environment, MeshPortalMaterial, OrbitControls, RoundedBox, Text, useTexture } from "@react-three/drei";
 import { Alpaca, Deer, Husky } from "./models";
+import { useFrame } from "@react-three/fiber";
+import { easing } from "maath";
+
+type ActiveCardName = "Alpaca" | "Deer" | "Husky";
 
 const PortalScene = () => {
+  const [isActive, setIsActive] = useState<ActiveCardName | null>(null);
+
   return (
     <Suspense fallback={null}>
       <ambientLight intensity={0.5} />
@@ -14,10 +20,18 @@ const PortalScene = () => {
         texture="textures/digital_painting_dark_city_with_many_stars_and_lig.jpg"
         position-x={-2.5}
         rotation-y={Math.PI / 8}
+        isActive={isActive}
+        setIsActive={setIsActive}
       >
         <Husky scale={0.5} position-y={-1} />
       </PortalCard>
-      <PortalCard name="Alpaca" color="#ae855a" texture="textures/digital_painting_deep_forest_with_flowers.jpg">
+      <PortalCard
+        name="Alpaca"
+        color="#ae855a"
+        texture="textures/digital_painting_deep_forest_with_flowers.jpg"
+        isActive={isActive}
+        setIsActive={setIsActive}
+      >
         <Alpaca scale={0.4} position-y={-1} />
       </PortalCard>
       <PortalCard
@@ -26,6 +40,8 @@ const PortalScene = () => {
         texture="textures/digital_painting_water_with_flowers.jpg"
         position-x={2.5}
         rotation-y={-Math.PI / 8}
+        isActive={isActive}
+        setIsActive={setIsActive}
       >
         <Deer scale={0.5} position-y={-1} />
       </PortalCard>
@@ -36,20 +52,39 @@ const PortalScene = () => {
 interface PortalCardProps {
   children: React.ReactNode;
   texture: string;
-  name: string;
+  name: ActiveCardName;
   color: string;
+  isActive: ActiveCardName | null;
+  setIsActive: React.Dispatch<React.SetStateAction<ActiveCardName | null>>;
 }
 
-const PortalCard = ({ children, texture, name, color, ...props }: JSX.IntrinsicElements["group"] & PortalCardProps) => {
+const PortalCard = ({
+  children,
+  texture,
+  name,
+  color,
+  isActive,
+  setIsActive,
+  ...props
+}: JSX.IntrinsicElements["group"] & PortalCardProps) => {
   const map = useTexture(texture);
+  const portalRef = useRef(null);
+
+  useFrame((_state, delta) => {
+    if (portalRef.current) {
+      const isCurrentPortalOpen = isActive === name;
+      easing.damp(portalRef.current, "blend", isCurrentPortalOpen ? 1 : 0, 0.2, delta);
+    }
+  });
+
   return (
     <group {...props}>
       <Text font="fonts/AppleSDGothicNeoR.ttf" fontSize={0.3} position={[-0.42, -1.4, 0.051]} anchorY={"bottom"}>
         {name}
         <meshBasicMaterial color={color} toneMapped={false} />
       </Text>
-      <RoundedBox args={[2, 3, 0.1]}>
-        <MeshPortalMaterial>
+      <RoundedBox args={[2, 3, 0.1]} onDoubleClick={() => setIsActive(isActive === name ? null : name)}>
+        <MeshPortalMaterial ref={portalRef}>
           <Environment preset="sunset" />
           <ambientLight intensity={0.5} />
           {children}
