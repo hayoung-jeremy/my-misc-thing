@@ -1,10 +1,19 @@
 "use client";
 import React, { useMemo } from "react";
 import { Canvas } from "@react-three/fiber";
-import { CylinderScene, DissolveEffect, PortalScene, RapierTestScene, Scene, TheatreScene } from "@/components/three";
 import { KeyboardControls } from "@react-three/drei";
-import { Controls } from "@/constants";
 import { Physics } from "@react-three/rapier";
+
+import {
+  CylinderScene,
+  DissolveEffect,
+  PortalScene,
+  RapierTestScene,
+  Scene,
+  ShaderTorusScene,
+  TheatreScene,
+} from "@/components/three";
+import { Controls } from "@/constants";
 
 const TestCanvas = () => {
   // const map = useMemo(
@@ -37,7 +46,7 @@ const TestCanvas = () => {
     <div className="w-screen h-screen">
       {/* <KeyboardControls map={map}> */}
       <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 0, 10], fov: 30 }}>
-        <PortalScene />
+        <ShaderTorusScene />
         {/* <Physics
             debug
             // 중력 세기 조절
