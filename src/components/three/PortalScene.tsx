@@ -1,19 +1,31 @@
-import React, { Suspense, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { Environment, MeshPortalMaterial, OrbitControls, RoundedBox, Text, useTexture } from "@react-three/drei";
+import { CameraControls, Environment, MeshPortalMaterial, RoundedBox, Text, useTexture } from "@react-three/drei";
 import { Alpaca, Deer, Husky } from "./models";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
 
 type ActiveCardName = "Alpaca" | "Deer" | "Husky";
 
 const PortalScene = () => {
   const [isActive, setIsActive] = useState<ActiveCardName | null>(null);
+  const cameraRef = useRef<CameraControls>(null);
+  const scene = useThree(state => state.scene);
+
+  useEffect(() => {
+    if (isActive) {
+      const targetPosition = new THREE.Vector3();
+      scene.getObjectByName(isActive)?.getWorldPosition(targetPosition);
+      cameraRef.current?.setLookAt(0, 0, 5, targetPosition.x, targetPosition.y, targetPosition.z, true);
+    } else {
+      cameraRef.current?.setLookAt(0, 0, 10, 0, 0, 0, true);
+    }
+  }, [isActive, scene]);
 
   return (
     <Suspense fallback={null}>
       <ambientLight intensity={0.5} />
-      <OrbitControls />
+      <CameraControls ref={cameraRef} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 6} />
       <PortalCard
         name="Husky"
         color="#bbb1a5"
@@ -83,7 +95,7 @@ const PortalCard = ({
         {name}
         <meshBasicMaterial color={color} toneMapped={false} />
       </Text>
-      <RoundedBox args={[2, 3, 0.1]} onDoubleClick={() => setIsActive(isActive === name ? null : name)}>
+      <RoundedBox name={name} args={[2, 3, 0.1]} onDoubleClick={() => setIsActive(isActive === name ? null : name)}>
         <MeshPortalMaterial ref={portalRef}>
           <Environment preset="sunset" />
           <ambientLight intensity={0.5} />
