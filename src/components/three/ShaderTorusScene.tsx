@@ -13,12 +13,12 @@ const ShaderTorusScene = () => {
     <Suspense fallback={null}>
       <OrbitControls />
       <mesh>
-        <torusGeometry args={[1, 0.3, 100, 100]} />
+        <torusGeometry args={[1, 0.3, 1000, 1000]} />
         <shaderMaterial
           vertexShader={torusVertexShader}
           fragmentShader={torusFragmentShader}
           side={THREE.DoubleSide}
-          wireframe
+          //   wireframe
           uniforms={uniforms}
         />
       </mesh>
