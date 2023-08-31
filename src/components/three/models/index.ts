@@ -1,4 +1,3 @@
-export { default as FireTruck } from "./FireTruck";
 export { default as DeliveryVan } from "./DeliveryVan";
 export { default as Alpaca } from "./Alpaca";
 export { default as Deer } from "./Deer";
