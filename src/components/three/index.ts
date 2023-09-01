@@ -6,3 +6,4 @@ export { default as RapierTestScene } from "./RapierTestScene";
 export { default as PortalScene } from "./PortalScene";
 export { default as ShaderTorusScene } from "./ShaderTorusScene";
 export { default as AnimatedShaderScene } from "./AnimatedShaderScene";
+export { default as ScrollAnimationScene } from "./ScrollAnimationScene";

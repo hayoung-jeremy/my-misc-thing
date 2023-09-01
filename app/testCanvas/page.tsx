@@ -11,6 +11,7 @@ import {
   PortalScene,
   RapierTestScene,
   Scene,
+  ScrollAnimationScene,
   ShaderTorusScene,
   TheatreScene,
 } from "@/components/three";
@@ -47,8 +48,7 @@ const TestCanvas = () => {
     <div className="w-screen h-screen">
       {/* <KeyboardControls map={map}> */}
       <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 0, 5], fov: 40 }}>
-        {/* <ShaderTorusScene /> */}
-        <AnimatedShaderScene />
+        <ScrollAnimationScene />
         {/* <Physics
             debug
             // 중력 세기 조절
