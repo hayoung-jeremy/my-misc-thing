@@ -1,5 +1,5 @@
 import React from "react";
-import { Environment, Lightformer, OrbitControls } from "@react-three/drei";
+import { ContactShadows, Environment, Lightformer, OrbitControls } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 import { CyberTruck } from "./models";
@@ -8,8 +8,17 @@ const AnimatedShaderScene = () => {
   return (
     <>
       <color attach="background" args={["#15151a"]} />
-      <CyberTruck scale={0.5} />
-      <OrbitControls />
+      <CyberTruck scale={0.5} position-y={-1.2} />
+      <OrbitControls minPolarAngle={0} maxPolarAngle={Math.PI / 2} />
+      <ContactShadows
+        resolution={1024}
+        frames={300}
+        position={[0, -1.16, 0]}
+        scale={15}
+        blur={0.5}
+        opacity={1}
+        far={20}
+      />
       <Environment resolution={512}>
         <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -9]} scale={[10, 1, 1]} />
         <Lightformer intensity={2} rotation-x={Math.PI / 2} position={[0, 4, -6]} scale={[10, 1, 1]} />

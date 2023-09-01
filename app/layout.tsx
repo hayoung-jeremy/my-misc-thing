@@ -1,4 +1,5 @@
 "use client";
+import { Leva } from "leva";
 import "./globals.css";
 import { Header } from "@/components/layout";
 
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {/* <Header /> */}
         {children}
+        <Leva />
       </body>
     </html>
   );

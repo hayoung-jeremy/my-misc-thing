@@ -46,7 +46,7 @@ const TestCanvas = () => {
   return (
     <div className="w-screen h-screen">
       {/* <KeyboardControls map={map}> */}
-      <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 1, 5], fov: 40 }}>
+      <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 0, 5], fov: 40 }}>
         {/* <ShaderTorusScene /> */}
         <AnimatedShaderScene />
         {/* <Physics
