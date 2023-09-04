@@ -12,7 +12,7 @@ export default function TestCanvasLayout({ children }: { children: React.ReactNo
         opacity: { ease: "linear" },
         layout: { duration: 0.3 },
       }}
-      className="w-full flex min-h-screen flex-col items-center justify-center bg-gradient-radial from-[#000] to-slate-900"
+      className="w-full min-h-screen bg-gradient-radial from-[#000] to-slate-900"
     >
       {children}
     </motion.main>
