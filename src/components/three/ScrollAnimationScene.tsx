@@ -10,6 +10,7 @@ const ScrollAnimationScene = () => {
 
       <Environment preset="sunset" />
       <OrbitControls enableZoom={false} />
+      <fog attach="fog" args={["#000", 4, 7]} />
     </>
   );
 };
