@@ -34,7 +34,7 @@ const ScrollAnimationObjects = () => {
     timeline.current.to(SceneRef.current.rotation, { duration: 1, x: 0, y: degToRad(0), z: 0 }, 2);
 
     // page2
-    timeline.current.from(page2.current.position, { duration: 1, x: -2, y: -4 }, 1);
+    timeline.current.from(page2.current.position, { duration: 4, x: -2, y: -2 }, 0);
     timeline.current.from(page2.current.rotation, { duration: 0.5, y: degToRad(0) }, 2);
 
     // page3
