@@ -16,6 +16,7 @@ import {
   TheatreScene,
 } from "@/components/three";
 import { Controls } from "@/constants";
+import SelectiveBloomScene from "@/components/three/SelectiveBloomScene";
 
 const TestCanvas = () => {
   // const map = useMemo(
@@ -48,7 +49,7 @@ const TestCanvas = () => {
     <div className="w-screen h-screen">
       {/* <KeyboardControls map={map}> */}
       <Canvas gl={{ preserveDrawingBuffer: true }} camera={{ position: [0, 0, 5], fov: 40 }}>
-        <ScrollAnimationScene />
+        <SelectiveBloomScene />
         {/* <Physics
             debug
             // 중력 세기 조절
